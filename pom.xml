@@ -77,6 +77,38 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+			<plugin>
+    			<groupId>org.jooq</groupId>
+    			<artifactId>jooq-codegen-maven</artifactId>
+   			 	<version>3.19.6</version>
+    			<executions>
+        			<execution>
+            			<id>generate</id>
+            			<phase>generate-sources</phase>
+            			<goals>
+                			<goal>generate</goal>
+            			</goals>
+            			<configuration>
+                			<jdbc>
+                    			<driver>com.mysql.cj.jdbc.Driver</driver>
+                    			<url>jdbc:mysql://localhost:3306/AthleticProByVeronica</url>
+                    			<user>user</user>
+                    			<password>password</password>
+                			</jdbc>
+                			<generator>
+                    			<database>
+                        			<name>org.jooq.meta.mysql.MySQLDatabase</name>
+                        			<inputSchema>AthleticProByVeronica</inputSchema>
+                    			</database>
+                    			<target>
+                        			<packageName>com.veronica.modelo</packageName>
+                        			<directory>${project.basedir}/src/main/java</directory>
+                    			</target>
+                			</generator>
+            			</configuration>
+        			</execution>
+    			</executions>
+			</plugin>
 		</plugins>
 	</build>
 
